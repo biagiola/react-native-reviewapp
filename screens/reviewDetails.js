@@ -1,13 +1,26 @@
 import React from 'react'
-import { View, Text, } from 'react-native'
-import { globalStyles } from '../styles/global'
+import { StyleSheet, View, Text, Image } from 'react-native'
+import { globalStyles, images } from '../styles/global'
+import Card from '../shared/card'
 
 export default function ReviewDetails({ navigation }) {
+
+  const rating = navigation.getParam('rating')
+
   return (
     <View style={globalStyles.container}>
-      <Text style={globalStyles.titleText}>{ navigation.getParam('title')}</Text>
-      <Text style={globalStyles.titleText}>{ navigation.getParam('body')}</Text>
-      <Text style={globalStyles.titleText}>{ navigation.getParam('rating')}</Text>
+      <Card>
+        <Text style={globalStyles.titleText}>{ navigation.getParam('title')}</Text>
+        <Text style={globalStyles.titleText}>{ navigation.getParam('body')}</Text>
+        <View>
+          <Text>GameZone rating: </Text>
+          <Image source={images.ratings[rating]}/>
+        </View>
+      </Card>
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+
+})
