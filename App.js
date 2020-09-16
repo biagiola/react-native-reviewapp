@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { AppLoading } from 'expo'
 import * as Font from 'expo-font'
-import Navigator from './routes/homeStack'
+import Navigator from './routes/drawer'
 
 const getFonts = () => Font.loadAsync({
   'nunito-regular': require('./assets/fonts/Nunito-Regular.ttf'),
