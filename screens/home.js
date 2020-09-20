@@ -10,7 +10,6 @@ export default function Home({ navigation }) {
     { title: 'Not So "Final" Fantasy', rating: 3, body: 'lorem ipsum', key: '3' },
   ]);
 
-
   return (
     <View style={globalStyles.container}>
       <FlatList data={reviews} renderItem={({ item }) => (
@@ -21,11 +20,6 @@ export default function Home({ navigation }) {
           </TouchableOpacity>
         )}
       />
-      <TouchableOpacity onPress={() => navigation.navigate('ReviewDetails', item)}>
-        <Card>
-          <Text style={globalStyles.titleText}>testing</Text>
-        </Card>
-      </TouchableOpacity>  
     </View>
   )
 }
