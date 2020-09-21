@@ -16,7 +16,7 @@ export default function ReviewDetails({ navigation }) {
         <View style={styles.rating}>
           <Text>GameZone rating: </Text>
           <Image 
-            style={{width: rating*21, height: 21}} 
+            style={{width: rating*19, height: 19}} 
             source={images.ratings[rating]} />
         </View>
       </Card>

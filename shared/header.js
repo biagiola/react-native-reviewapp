@@ -22,7 +22,6 @@ export default function Header({navigation, title}) {
   )
 }
 
-
 const styles = StyleSheet.create({
   header: {
     width: '100%',
