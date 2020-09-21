@@ -1,18 +1,14 @@
 import React from 'react'
 import { View, StyleSheet, Text, Dimensions, Image, ImageBackground } from 'react-native';
-import {MaterialIcons} from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 
 export default function Header({navigation, title}) {
   const openMenu =()=>{
     navigation.openDrawer();
   }
  
-  console.log(Dimensions.get('screen').height)
   return (
-    <ImageBackground 
-      style={styles.header}
-      source={require('../assets/game_bg.png')}
-      >
+    <View style={styles.header}>
       <MaterialIcons name="menu" size={28} onPress={openMenu}  style={styles.icon}/>
       <View style={styles.headerTitle}>
         <Image style={styles.headerImage} source={require(
@@ -22,20 +18,18 @@ export default function Header({navigation, title}) {
             {title}
         </Text>
       </View>
-    </ImageBackground>
+    </View>
   )
 }
 
 
 const styles = StyleSheet.create({
-  header: {      
-    width:Dimensions.get('screen').width,
+  header: {
+    width: '100%',
     height: '100%',
-    marginTop:-15,
-    marginLeft:-15,
     flexDirection: 'row',
-    flex:1,
     alignItems: 'center',
+    justifyContent: 'center',
   },
   headerText: {
     fontWeight: 'bold',
@@ -50,7 +44,8 @@ const styles = StyleSheet.create({
     position: 'relative',
     flexDirection:'column',
     flex:0.5,
-    marginTop:15,
+    marginTop:10,
+    marginHorizontal: -100,
   },
   headerImage:{
     width: 26,
@@ -59,6 +54,7 @@ const styles = StyleSheet.create({
     marginTop:15,
   },
   headerTitle: {
-    flexDirection:'row'
+    flexDirection:'row',
+    marginTop: -5
   }
 });
