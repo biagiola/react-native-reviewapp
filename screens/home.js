@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
-import { StyleSheet, View, Text, TouchableOpacity, FlatList } from 'react-native'
-import Modal from 'modal-react-native-web';
+import { StyleSheet, View, Text, TouchableOpacity, Modal, FlatList,
+  TouchableWithoutFeedback, Keyboard  } from 'react-native'
+//import Modal from 'modal-react-native-web';
 import { globalStyles } from '../styles/global'
-import { MaterialIcons } from '@expo/vector-icons'
 import Card from '../shared/card'
+import { MaterialIcons } from '@expo/vector-icons'
+import ReviewForm from './reviewForm'
 
 export default function Home({ navigation }) {
   const [reviews, setReviews] = useState([
@@ -14,26 +16,29 @@ export default function Home({ navigation }) {
   
   const [modalOpen, setModalOpen] = useState(false)
 
-  console.log(modalOpen)
+  const addReview = (review) => {
+    review.key = Math.random().toString() // ?
+    setReviews((currentReview) => {
+      return [review, ...currentReview]
+    })
+    setModalOpen(false)
+  }
 
   return (
     <View style={globalStyles.container}>
   
-      <Modal animationType="slide"
-        transparent={false}
-        visible={modalOpen}
-        onDismiss={() => {
-          //alert('Modal has been closed.');
-        }}>
-        <View style={styles.modalContent}>
-          <MaterialIcons 
-            name='close'
-            size={24} 
-            style={{...styles.modalToggle, ...styles.modalClose}} 
-            onPress={() => setModalOpen(false)} 
-          />
-          <Text>Hello from the modal :)</Text>
-        </View>
+      <Modal visible={modalOpen} animationType="slide">
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>{/* kayboard.dismiss or () => keyboard.dismiss() */}
+          <View style={styles.modalContent}>
+            <MaterialIcons 
+              name='close'
+              size={24} 
+              style={{...styles.modalToggle, ...styles.modalClose}} 
+              onPress={() => setModalOpen(false)} 
+            />
+            <ReviewForm addReview={addReview}/>
+          </View>
+        </TouchableWithoutFeedback>
       </Modal>
 
       {/* open modal */}  

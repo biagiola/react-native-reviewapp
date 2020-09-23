@@ -12,7 +12,7 @@ const screens = {
       return {
         // Custom header
         headerTitle: () => <Header navigation={navigation} title='GameZone' />,
-        headerBackground: () => <Image source={require('../assets/game_bg.png')} style={{height:60}}/>
+        headerBackground: () => <Image source={require('../assets/game_bg.png')} style={{height:80}}/>
       }
     }
   },
